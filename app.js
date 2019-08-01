@@ -29,7 +29,7 @@ window.addEventListener("load", () => {
           locationTZ.textContent = data.timezone;
 
           // Set Celcius
-          let celsius = temperature - 32 * (5 / 9);
+          let celsius = ((temperature - 32) * (5 / 9));
 
           // Set Icon
           setIcons(icon, document.querySelector(".icon"));
