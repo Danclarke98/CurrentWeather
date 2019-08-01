@@ -21,11 +21,14 @@
                 })
                 .then(data => {
                     console.log(data);
-                    const {temperature, summary} = data.currently;
+                    const {temperature, summary, icon} = data.currently;
                     //Set DOM elements from API
                     temperatureDegree.textContent = temperature;
                     temperatureDescription.textContent = summary;
                     locationTZ.textContent = data.timezone;
+
+                    // Set Icon
+                    setIcons(icon, document.querySelector(".icon"));
 
                 });  
     
@@ -36,5 +39,14 @@
     }else{
         alert("Please enable location services");
     }
+
+
+    function setIcons(icon, iconID){
+        const skycons = new Skycons({color: "white"});
+        const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+        skycons.play();
+        return skycons.set(iconID, Skycons[currentIcon]); 
+    }
+
 
 });  
